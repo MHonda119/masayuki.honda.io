@@ -25,6 +25,8 @@ export const siteContent = {
       { href: "#mission", label: "注力領域" },
       { href: "#work", label: "実績" },
       { href: "#activities", label: "活動" },
+      { href: "#education", label: "教育" },
+      { href: "#academic-research", label: "研究" },
       { href: "#contact", label: "連絡先" },
     ],
     hero: {
@@ -107,26 +109,39 @@ export const siteContent = {
       ],
     },
     activities: {
-      kicker: "Activities and Education",
-      title: "対外活動・教育活動",
+      kicker: "Activities",
+      title: "活動",
+      demoShowcase: {
+        title: "学会・企業ブースでのデモ展示",
+        body: "主に人工知能学会(JSAI)、画像の認識・理解シンポジウム(MIRU)、自然言語処理学会(NLP)に出展しています。",
+        images: [
+          { imageId: "prj-miru-2025", label: "画像理解のシンポジウム" },
+          { imageId: "prj-jsai-2025", label: "人工知能学会" },
+          { imageId: "prj-jsai-2026", label: "人工知能学会" },
+          { imageId: "prj-nlp-2026", label: "言語処理学会" },
+        ],
+      },
+    },
+    education: {
+      kicker: "Education",
+      title: "教育",
       items: [
         {
-          title: "学会・企業ブースでのデモ展示",
-          body: "国内学会や企業展示ブース向けのPoC / デモ開発および展示活動に従事。",
-          list: [
-            "人工知能学会2026",
-            "画像の認識・理解シンポジウム",
-            "自然言語処理学会2026",
-          ],
+          title: "京都産業大学での講義",
+          imageId: "ksu-lecture-room",
+          body: "京都産業大学でシステム開発演習の講義を担当。",
         },
         {
-          title: "大学講義・研究メンター",
-          body: "京都産業大学でシステム開発演習の講義を担当。東京農工大学では博士学生の研究メンターや講演を実施。",
+          title: "東京農工大学での研究メンター",
+          imageId: "tuat-ai-salon",
+          body: "東京農工大学では博士学生の研究メンターや講演を実施。",
         },
       ],
     },
     research: {
-      title: "学生時代の研究テーマ",
+      kicker: "Academic Research",
+      title: "大学院での研究",
+      panelTitle: "研究テーマ",
       items: [
         [
           "情報工学",
@@ -158,6 +173,8 @@ export const siteContent = {
       { href: "#mission", label: "Mission" },
       { href: "#work", label: "Work" },
       { href: "#activities", label: "Activities" },
+      { href: "#education", label: "Education" },
+      { href: "#academic-research", label: "Research" },
       { href: "#contact", label: "Contact" },
     ],
     hero: {
@@ -259,26 +276,52 @@ export const siteContent = {
       ],
     },
     activities: {
-      kicker: "Activities and Education",
-      title: "External Activities and Education",
+      kicker: "Activities",
+      title: "Activities",
+      demoShowcase: {
+        title: "Demonstrations at Academic Conferences and Corporate Booths",
+        body: "I mainly exhibit at JSAI, MIRU, and NLP conferences.",
+        images: [
+          {
+            imageId: "prj-miru-2025",
+            label: "Meeting on Image Recognition and Understanding",
+          },
+          {
+            imageId: "prj-jsai-2025",
+            label: "The Japanese Society for Artificial Intelligence",
+          },
+          {
+            imageId: "prj-jsai-2026",
+            label: "The Japanese Society for Artificial Intelligence",
+          },
+          {
+            imageId: "prj-nlp-2026",
+            label: "The Association for Natural Language Processing",
+          },
+        ],
+      },
+    },
+    education: {
+      kicker: "Education",
+      title: "Education",
       items: [
         {
-          title: "Demonstrations at Academic Conferences and Corporate Booths",
-          body: "Developed and presented PoCs / demos for domestic academic conferences and corporate exhibition booths.",
-          list: [
-            "The Japanese Society for Artificial Intelligence 2026",
-            "Meeting on Image Recognition and Understanding",
-            "The Association for Natural Language Processing 2026",
-          ],
+          title: "Lectures at Kyoto Sangyo University",
+          imageId: "ksu-lecture-room",
+          body: "Taught system development exercises at Kyoto Sangyo University.",
         },
         {
-          title: "University Lecture and Research Mentor",
-          body: "Taught system development exercises at Kyoto Sangyo University and occasionally mentors doctoral students at Tokyo University of Agriculture and Technology.",
+          title:
+            "Research Mentoring at Tokyo University of Agriculture and Technology",
+          imageId: "tuat-ai-salon",
+          body: "Mentored doctoral students and gave occasional research talks at Tokyo University of Agriculture and Technology.",
         },
       ],
     },
     research: {
-      title: "Research Topics as a Student",
+      kicker: "Academic Research",
+      title: "Graduate Research",
+      panelTitle: "Research Topics",
       items: [
         [
           "Computer Science",

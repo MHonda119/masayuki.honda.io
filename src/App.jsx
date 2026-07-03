@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Activities } from "./components/Activities.jsx";
+import { AcademicResearch } from "./components/AcademicResearch.jsx";
 import { Career } from "./components/Career.jsx";
 import { Contact } from "./components/Contact.jsx";
+import { Education } from "./components/Education.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { Header } from "./components/Header.jsx";
 import { Hero } from "./components/Hero.jsx";
@@ -15,7 +17,9 @@ const storageKey = "language";
 
 function getInitialLanguage() {
   const savedLanguage = window.localStorage.getItem(storageKey);
-  return savedLanguage === "ja" || savedLanguage === "en" ? savedLanguage : "ja";
+  return savedLanguage === "ja" || savedLanguage === "en"
+    ? savedLanguage
+    : "ja";
 }
 
 export default function App() {
@@ -39,10 +43,15 @@ export default function App() {
       <main id="top">
         <Hero content={content.hero} />
         <Profile content={content.profile} />
-        <Mission content={content.mission} articleUrl={commonContent.missionArticleUrl} />
+        <Mission
+          content={content.mission}
+          articleUrl={commonContent.missionArticleUrl}
+        />
         <Career content={content.career} />
         <Work content={content.work} keywords={commonContent.keywords} />
-        <Activities content={content.activities} research={content.research} />
+        <Activities content={content.activities} />
+        <Education content={content.education} />
+        <AcademicResearch content={content.research} />
         <Personal content={content.personal} />
         <Contact
           content={content.contact}

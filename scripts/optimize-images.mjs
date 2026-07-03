@@ -67,19 +67,43 @@ function coverCropRegion(metadata, preset, photo) {
   return { left: 0, top, width: cropWidth, height: cropHeight };
 }
 
-async function createPhotoVariant(source, preset, width, photo) {
-  if (preset.fit === "inside" || photo.cropOffsetY == null) {
-    return source
-      .clone()
-      .resize(resizeOptions(preset, width, photo.position ?? "center"));
+function sourceCropRegion(metadata, photo) {
+  if (!photo.cropTrim) {
+    return null;
   }
 
+  const top = Math.round(metadata.height * (photo.cropTrim.top ?? 0));
+  const bottom = Math.round(metadata.height * (photo.cropTrim.bottom ?? 0));
+  const height = metadata.height - top - bottom;
+
+  if (height <= 0) {
+    throw new Error(`Invalid cropTrim for photo: ${photo.id}`);
+  }
+
+  return { left: 0, top, width: metadata.width, height };
+}
+
+async function createPhotoVariant(source, preset, width, photo) {
   const metadata = await source.clone().metadata();
+  const cropRegion = sourceCropRegion(metadata, photo);
+  const croppedSource = cropRegion
+    ? source.clone().extract(cropRegion)
+    : source.clone();
+  const croppedMetadata = cropRegion
+    ? { width: cropRegion.width, height: cropRegion.height }
+    : metadata;
+
+  if (preset.fit === "inside" || photo.cropOffsetY == null) {
+    return croppedSource.resize({
+      ...resizeOptions(preset, width, photo.position ?? "center"),
+      withoutEnlargement: !cropRegion,
+    });
+  }
+
   const [ratioWidth, ratioHeight] = preset.aspectRatio;
 
-  return source
-    .clone()
-    .extract(coverCropRegion(metadata, preset, photo))
+  return croppedSource
+    .extract(coverCropRegion(croppedMetadata, preset, photo))
     .resize({
       width,
       height: Math.round((width * ratioHeight) / ratioWidth),
