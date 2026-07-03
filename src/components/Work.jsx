@@ -96,7 +96,9 @@ export function Work({ content, keywords }) {
           </div>
           <div className="keyword-list" aria-label="Keywords">
             {keywords.map((keyword) => (
-              <span key={keyword}>{keyword}</span>
+              <span className="keyword-label" key={keyword}>
+                {keyword}
+              </span>
             ))}
           </div>
         </div>

@@ -155,7 +155,29 @@ export const siteContent = {
     personal: {
       kicker: "Interests",
       title: "趣味・特技",
-      items: ["ボードゲーム", "登山", "釣り", "お酒"],
+      closeLabel: "閉じる",
+      items: [
+        {
+          title: "ボードゲーム",
+          imageId: "interest-board-game",
+          comment: "マーズはいいぞ",
+        },
+        {
+          title: "登山",
+          imageId: "interest-climbing",
+          comment: "山はいいぞ",
+        },
+        {
+          title: "釣り",
+          imageId: "interest-sakana",
+          comment: "魚はいいぞ",
+        },
+        {
+          title: "お酒",
+          imageId: "interest-sake",
+          comment: "酒はいいぞ",
+        },
+      ],
     },
     contact: {
       kicker: "Contact",
@@ -341,11 +363,28 @@ export const siteContent = {
     personal: {
       kicker: "Interests",
       title: "Hobbies and Interests",
+      closeLabel: "Close",
       items: [
-        "Board games",
-        "Mountain climbing",
-        "Fishing",
-        "Sake and other alcoholic drinks",
+        {
+          title: "Board games",
+          imageId: "interest-board-game",
+          comment: "Mars is good.",
+        },
+        {
+          title: "Mountain climbing",
+          imageId: "interest-climbing",
+          comment: "Mountains are good.",
+        },
+        {
+          title: "Fishing",
+          imageId: "interest-sakana",
+          comment: "Fish are good.",
+        },
+        {
+          title: "Sake and other alcoholic drinks",
+          imageId: "interest-sake",
+          comment: "Sake is good.",
+        },
       ],
     },
     contact: {
