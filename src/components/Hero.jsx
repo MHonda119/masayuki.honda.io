@@ -1,12 +1,15 @@
-const heroImageUrl = `${import.meta.env.BASE_URL}assets/sovereign-ai-cloud.png`;
+const heroImageUrl = new URL(
+  `${import.meta.env.BASE_URL}assets/sovereign-ai-cloud.png`,
+  window.location.href,
+).href;
 
 export function Hero({ content }) {
   return (
     <section
       className="hero"
       aria-labelledby="hero-title"
-      style={{ "--hero-image": `url(${heroImageUrl})` }}
     >
+      <img className="hero-bg-image" src={heroImageUrl} alt="" aria-hidden="true" />
       <div className="hero-shade" aria-hidden="true" />
       <div className="hero-inner">
         <p className="eyebrow">{content.eyebrow}</p>

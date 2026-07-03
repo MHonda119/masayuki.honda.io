@@ -148,21 +148,38 @@ select {
   min-height: 680px;
   isolation: isolate;
   overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(11, 24, 22, 0.88) 0%, rgba(12, 31, 29, 0.7) 44%, rgba(12, 31, 29, 0.18) 100%),
-    var(--hero-image) center / cover no-repeat,
-    #102522;
+  background: #102522;
+}
+
+.hero::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(11, 24, 22, 0.88) 0%, rgba(12, 31, 29, 0.7) 44%, rgba(12, 31, 29, 0.18) 100%);
+  content: "";
+  pointer-events: none;
+}
+
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-shade {
   position: absolute;
   inset: auto 0 0;
+  z-index: 1;
   height: 34%;
   background: linear-gradient(0deg, rgba(11, 24, 22, 0.68), rgba(11, 24, 22, 0));
-  z-index: -1;
 }
 
 .hero-inner {
+  position: relative;
+  z-index: 2;
   width: min(1120px, calc(100% - 48px));
   min-height: 680px;
   margin: 0 auto;
@@ -647,11 +664,8 @@ h3 {
     min-height: 610px;
   }
 
-  .hero {
-    background:
-      linear-gradient(90deg, rgba(11, 24, 22, 0.9) 0%, rgba(12, 31, 29, 0.72) 62%, rgba(12, 31, 29, 0.32) 100%),
-      var(--hero-image) center / cover no-repeat,
-      #102522;
+  .hero::before {
+    background: linear-gradient(90deg, rgba(11, 24, 22, 0.9) 0%, rgba(12, 31, 29, 0.72) 62%, rgba(12, 31, 29, 0.32) 100%);
   }
 
   .two-column,
