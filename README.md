@@ -6,6 +6,34 @@ The Japanese version is provided later in this document as Part 2.
 
 ---
 
+## GitHub Pages Website / GitHub Pages公開用HP
+
+This repository includes a static self-introduction website for GitHub Pages.
+
+このリポジトリには、GitHub Pagesで公開するための静的な自己紹介HPを含めています。
+
+- Entry point / エントリーポイント: `index.html`
+- Styles / スタイル: `styles.css`
+- Language switch / 言語切り替え: `script.js`
+- Visual asset / 画像アセット: `assets/sovereign-ai-cloud.png`
+
+### GitHub Pages GUI setup / GitHub PagesのGUI設定
+
+After pushing these files to GitHub, open the repository page and configure:
+
+GitHubへpushしたあと、リポジトリ画面で以下を設定してください。
+
+1. `Settings` → `Pages`
+2. `Build and deployment` → `Source`: `Deploy from a branch`
+3. `Branch`: `main` / `(root)`
+4. `Save`
+
+The public website intentionally lists email contacts only. Phone numbers in this README should be reviewed before external publication.
+
+公開HPではメール連絡先のみを掲載しています。本README内の電話番号は、外部公開前に掲載範囲を確認してください。
+
+---
+
 ## Part 1: English Version
 
 ### Masayuki Honda
