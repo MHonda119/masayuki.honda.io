@@ -54,12 +54,12 @@ export function Hero({ content }) {
             <source
               type="image/avif"
               srcSet={selfFaceSrcSet("avif")}
-              sizes="(max-width: 820px) 72vw, 34vw"
+              sizes="(max-width: 620px) 100vw, (max-width: 820px) 72vw, 34vw"
             />
             <source
               type="image/webp"
               srcSet={selfFaceSrcSet("webp")}
-              sizes="(max-width: 820px) 72vw, 34vw"
+              sizes="(max-width: 620px) 100vw, (max-width: 820px) 72vw, 34vw"
             />
             <img
               className="hero-face-image"
