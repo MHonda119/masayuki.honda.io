@@ -8,14 +8,30 @@ The Japanese version is provided later in this document as Part 2.
 
 ## GitHub Pages Website / GitHub Pages公開用HP
 
-This repository includes a static self-introduction website for GitHub Pages.
+This repository includes a React + Vite self-introduction website for GitHub Pages.
 
-このリポジトリには、GitHub Pagesで公開するための静的な自己紹介HPを含めています。
+このリポジトリには、GitHub Pagesで公開するためのReact + Vite構成の自己紹介HPを含めています。
 
 - Entry point / エントリーポイント: `index.html`
-- Styles / スタイル: `styles.css`
-- Language switch / 言語切り替え: `script.js`
-- Visual asset / 画像アセット: `assets/sovereign-ai-cloud.png`
+- App source / アプリ本体: `src/`
+- Components / コンポーネント: `src/components/`
+- Content data / 掲載内容データ: `src/data/siteContent.js`
+- Styles / スタイル: `src/styles.css`
+- Visual asset / 画像アセット: `public/assets/sovereign-ai-cloud.png`
+- GitHub Pages workflow / GitHub Pagesデプロイ: `.github/workflows/deploy.yml`
+
+### Local development / ローカル開発
+
+```bash
+npm install
+npm run dev
+```
+
+Production build / 本番ビルド:
+
+```bash
+npm run build
+```
 
 ### GitHub Pages GUI setup / GitHub PagesのGUI設定
 
@@ -24,9 +40,14 @@ After pushing these files to GitHub, open the repository page and configure:
 GitHubへpushしたあと、リポジトリ画面で以下を設定してください。
 
 1. `Settings` → `Pages`
-2. `Build and deployment` → `Source`: `Deploy from a branch`
-3. `Branch`: `main` / `(root)`
-4. `Save`
+2. `Build and deployment` → `Source`: `GitHub Actions`
+3. Push to `main`, or run `Deploy GitHub Pages` from the `Actions` tab
+
+日本語:
+
+1. `Settings` → `Pages`
+2. `Build and deployment` → `Source`: `GitHub Actions`
+3. `main`へpushするか、`Actions`タブから`Deploy GitHub Pages`を実行してください
 
 The public website intentionally lists email contacts only. Phone numbers in this README should be reviewed before external publication.
 
