@@ -13,6 +13,7 @@ const photoVariantPresets = {
   hero: { widths: [960, 1280, 1600], aspectRatio: [16, 9], fit: "cover" },
   card: { widths: [640, 960], aspectRatio: [4, 3], fit: "cover" },
   portrait: { widths: [480, 720], aspectRatio: [3, 4], fit: "cover" },
+  project: { widths: [1280, 1600], aspectRatio: [16, 9], fit: "cover" },
   thumb: { widths: [320, 480], aspectRatio: [1, 1], fit: "cover" },
   full: { widths: [1280, 1600], fit: "inside" },
 };
