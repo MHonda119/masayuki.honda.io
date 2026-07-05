@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { photos } from "../data/photoManifest.js";
 import { SectionTitle } from "./SectionTitle.jsx";
 
@@ -29,54 +29,25 @@ export function Work({ content, keywords }) {
     () => new Map(photos.map((photo) => [photo.id, photo])),
     []
   );
-  const [activeProject, setActiveProject] = useState(null);
-  const projectImagePanelRef = useRef(null);
-  const shouldScrollToPanelRef = useRef(false);
-
-  const activePhoto = activeProject?.imageId
-    ? projectPhotos.get(activeProject.imageId)
-    : null;
-
-  function scrollToProjectImagePanel() {
-    window.requestAnimationFrame(() => {
-      projectImagePanelRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
-  }
+  const [expandedProjectTitle, setExpandedProjectTitle] = useState(null);
 
   useEffect(() => {
-    shouldScrollToPanelRef.current = false;
-    setActiveProject(null);
+    setExpandedProjectTitle(null);
   }, [content]);
 
-  useEffect(() => {
-    if (!activePhoto || !shouldScrollToPanelRef.current) {
+  function toggleProject(projectTitle) {
+    const updateExpandedProject = () => {
+      setExpandedProjectTitle((currentTitle) =>
+        currentTitle === projectTitle ? null : projectTitle
+      );
+    };
+
+    if (document.startViewTransition) {
+      document.startViewTransition(updateExpandedProject);
       return;
     }
 
-    shouldScrollToPanelRef.current = false;
-    scrollToProjectImagePanel();
-  }, [activePhoto, activeProject]);
-
-  function activateProject(project, shouldScroll = false) {
-    if (project.imageId && projectPhotos.has(project.imageId)) {
-      if (shouldScroll && activeProject?.title === project.title) {
-        scrollToProjectImagePanel();
-        return;
-      }
-
-      shouldScrollToPanelRef.current = shouldScroll;
-      setActiveProject(project);
-    }
-  }
-
-  function handleProjectKeyDown(event, project) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      activateProject(project, true);
-    }
+    updateExpandedProject();
   }
 
   return (
@@ -103,87 +74,90 @@ export function Work({ content, keywords }) {
           </div>
         </div>
 
-        <div className="responsibility-grid">
-          {content.responsibilities.map((responsibility) => (
-            <div key={responsibility}>{responsibility}</div>
-          ))}
-        </div>
+        <p className="work-summary">{content.summary}</p>
 
         <div className="project-grid">
           {content.projects.map((project) => {
             const hasImage = Boolean(
               project.imageId && projectPhotos.has(project.imageId)
             );
-            const isActive = activeProject?.title === project.title;
+            const photo = hasImage ? projectPhotos.get(project.imageId) : null;
+            const isExpanded = expandedProjectTitle === project.title;
+            const previewId = `project-image-preview-${project.imageId}`;
+
+            if (expandedProjectTitle && !isExpanded) {
+              return null;
+            }
 
             return (
               <article
                 className={`project-card${
                   hasImage ? " project-card-interactive" : ""
-                }${isActive ? " project-card-active" : ""}`}
+                }${isExpanded ? " project-card-active" : ""}`}
                 key={project.title}
-                role={hasImage ? "button" : undefined}
-                tabIndex={hasImage ? 0 : undefined}
-                aria-controls={hasImage ? "project-image-preview" : undefined}
-                aria-expanded={hasImage ? isActive : undefined}
-                onClick={() => activateProject(project, true)}
-                onFocus={() => activateProject(project)}
-                onKeyDown={(event) => handleProjectKeyDown(event, project)}
-                onMouseEnter={() => activateProject(project)}
               >
                 <h3>{project.title}</h3>
                 <p>{project.body}</p>
-                <span className="project-card-hint">
-                  {hasImage
-                    ? content.projectPreviewLabel
-                    : content.projectNoImageLabel}
-                </span>
+                {hasImage ? (
+                  <>
+                    <button
+                      className="project-card-toggle"
+                      type="button"
+                      aria-controls={previewId}
+                      aria-expanded={isExpanded}
+                      onClick={() => toggleProject(project.title)}
+                    >
+                      <span>{content.projectPreviewLabel}</span>
+                      <span
+                        className="project-card-toggle-icon"
+                        aria-hidden="true"
+                      >
+                        {isExpanded ? "-" : "+"}
+                      </span>
+                    </button>
+                    {isExpanded ? (
+                      <div
+                        className="project-image-panel"
+                        id={previewId}
+                        aria-live="polite"
+                      >
+                        {project.imageComment ? (
+                          <ProjectImageComment>
+                            {project.imageComment}
+                          </ProjectImageComment>
+                        ) : null}
+                        <picture className="project-image-picture">
+                          <source
+                            type="image/avif"
+                            srcSet={projectImageSrcSet(photo.id, "avif")}
+                            sizes="(max-width: 820px) 100vw, 1120px"
+                          />
+                          <source
+                            type="image/webp"
+                            srcSet={projectImageSrcSet(photo.id, "webp")}
+                            sizes="(max-width: 820px) 100vw, 1120px"
+                          />
+                          <img
+                            className="project-image"
+                            src={assetUrl(
+                              `assets/photos/${photo.id}/project-1600.jpg`
+                            )}
+                            alt={photo.alt}
+                            width="1600"
+                            height="900"
+                            loading="lazy"
+                            decoding="async"
+                            style={{ objectPosition: photo.position }}
+                          />
+                        </picture>
+                      </div>
+                    ) : null}
+                  </>
+                ) : null}
               </article>
             );
           })}
         </div>
-
-        {activePhoto ? (
-          <div
-            className="project-image-panel"
-            id="project-image-preview"
-            ref={projectImagePanelRef}
-            aria-live="polite"
-          >
-            <div className="project-image-heading">
-              <span>{activeProject.title}</span>
-            </div>
-            {activeProject.imageComment ? (
-              <ProjectImageComment>
-                {activeProject.imageComment}
-              </ProjectImageComment>
-            ) : null}
-            <picture className="project-image-picture">
-              <source
-                type="image/avif"
-                srcSet={projectImageSrcSet(activePhoto.id, "avif")}
-                sizes="(max-width: 820px) 100vw, 1120px"
-              />
-              <source
-                type="image/webp"
-                srcSet={projectImageSrcSet(activePhoto.id, "webp")}
-                sizes="(max-width: 820px) 100vw, 1120px"
-              />
-              <img
-                className="project-image"
-                src={assetUrl(
-                  `assets/photos/${activePhoto.id}/project-1600.jpg`
-                )}
-                alt={activePhoto.alt}
-                width="1600"
-                height="900"
-                loading="lazy"
-                decoding="async"
-                style={{ objectPosition: activePhoto.position }}
-              />
-            </picture>
-          </div>
-        ) : null}
       </div>
     </section>
   );
