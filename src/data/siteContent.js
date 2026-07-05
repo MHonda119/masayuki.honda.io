@@ -76,36 +76,40 @@ export const siteContent = {
       title: "これまでの参画プロジェクト",
       projectPreviewLabel: "詳細を表示",
       projectNoImageLabel: "画像なし",
-      responsibilities: [
-        "社内向けAIサービスの開発・保守",
-        "ML / LLMを利用するPoC開発",
-        "ソブリンクラウドプラットフォーム開発の初期検討・開発",
-      ],
+      summary:
+        "社内向けAIサービスの開発・保守、ML / LLMを利用するPoC、ソブリンクラウドプラットフォーム開発の初期検討から実装までを担当しています。",
       projects: [
         {
           title: "SNS分析基盤",
           imageId: "prj-sns-analysis",
           imageComment:
-            "AIAgentによる自動的なクエリ探索機能による分析業務や、LLMによるラベリング、Botやノイズ除外といった下流タスク処理を実現しています。",
-          body: "SNS（X）を分析する社内向けプラットフォームを提供。顧客の感情分類、地理情報の抽出、ノイズ検出、AI Agentによる分析・レポート出力などの機能を実現。カスタマー対応部門が利用。",
+            "顧客の感情分類、地理情報の抽出、ノイズ検出、AI Agentによる分析・レポート出力などML/LLMを複合的に活用した機能を実現しています。社外システム(Xほか)との連携や大規模データの処理する基盤や安定運用のための保守も行います。社内カスタマー対応部門が利用。",
+          body: "SNS（X）を分析する社内向けプラットフォームを開発",
         },
         {
           title: "RAG基盤システム",
           imageId: "prj-intra-rag",
           imageComment:
-            "正確にはRAGデータのチャンキングシステムやOpenAI連携は社内別プロダクトが担当しており、バックグラウンドで走るDB構成管理や検索アルゴリズムの開発を担当しています。",
-          body: "社内ChatGPT Enterpriseへの外部知識連携、また商用RAGシステムのバックグラウンド処理を開発",
+            "社内ChatGPT Enterpriseへの外部知識連携、また商用RAGシステムの検索や大規模データ処理を検証、開発、保守まで一貫して実施しています。正確にはRAGのためのチャンキングシステムやOpenAI連携は社内別プロダクト(TASUKI Annotation)が担当しています",
+          body: "社内・商用RAGシステムのバックグラウンド処理の検証と開発",
         },
         {
-          title: "株主総会での回答補助",
+          title: "株主総会支援",
           imageId: "prj-kabuso",
           imageComment:
-            "Webや当日会場にてリアルタイムで投函される株主からの質問の一次回答を生成したり、社長答弁に利用できる社内知識検索システムを開発しています。画像は総会舞台袖で控えるエンジニアです。",
-          body: "社内横断知識を活用し、株主向け回答生成と会場リアルタイムでの情報レコメンドを支援。",
+            "株主総会において、Webや会場当日にリアルタイムで投函される株主から質問へ社内外の情報をもとに一次回答を生成したり、社長答弁に利用できる知識検索システムを検証開発しています。画像は総会舞台袖で控えるエンジニアです。",
+          body: "株主向けの質問回答生成やリアルタイム情報推薦を支援",
         },
         {
-          title: "キャリア店舗向け画像認識",
-          body: "店舗運営における要注意顧客への注意喚起を支援する顔画像認識システムの保守運用を担当。",
+          title: "店舗向け画像認識",
+          body: "店舗運営における画像をもちいた要注意顧客推定システムの運用と開発",
+        },
+        {
+          title: "データ分析コンペティション",
+          imageId: "prj-competition",
+          imageComment:
+            "最近ではACM KDD2026(データマイニングと機械学習分野で権威ある国際会議)のデータ分析コンペティションに参加し、初戦を約300チーム中16位で通過しました。結果はまだですが、AIAgentがタスク解決を自立的に行う世界観が目前にあることを感じます。",
+          body: "学会/kaggleなどで開催されるコンペへの参加",
         },
       ],
     },
@@ -178,6 +182,11 @@ export const siteContent = {
           imageId: "interest-sake",
           comment: "お酒はいいぞ",
         },
+        {
+          title: "PCゲーム",
+          imageId: "interest-pc-game",
+          comment: "変なゲームばかりやってます",
+        },
       ],
     },
     contact: {
@@ -204,7 +213,7 @@ export const siteContent = {
     hero: {
       eyebrow: "AI Engineer / Data Scientist",
       title: "Masayuki Honda",
-      body: "In graduate school, I worked on applied research centered on pattern recognition across multiple domains, including agriculture, life sciences, and chemical engineering. I then joined SoftBank Corp., where I developed AI services and proof-of-concepts using ML / LLMs. Starting this fiscal year, I will focus on sovereign AI and the development of a next-generation domestic AI cloud platform.",
+      body: "In graduate school, I worked mainly in information engineering and pattern recognition while also conducting applied research across multiple domains, including agriculture, life sciences, and chemical engineering. I then joined SoftBank Corp., where I have worked on AI services and proof-of-concept development using ML / LLMs. I am now working on sovereign AI and the development of a next-generation domestic AI cloud platform.",
       primaryAction: "See SoftBank Focus Area",
       secondaryAction: "View Contact",
     },
@@ -215,7 +224,7 @@ export const siteContent = {
         ["Name", "Masayuki Honda"],
         [
           "Organization",
-          "SoftBank Corp., AI Agent Platform Development Section, AI Platform Development Department, AI & Data Science Division, Next-Generation Cloud Infrastructure Development Unit",
+          "SoftBank Corp., AI Agent Platform Development Section, AI Platform Development Department, AI & Data Science Division, Next-Generation Cloud Platform Development Unit",
         ],
         [
           "Concurrent Role",
@@ -228,7 +237,7 @@ export const siteContent = {
       kicker: "New Mission",
       title:
         "Sovereign AI: Building a Next-Generation Domestic AI Cloud Platform",
-      body: "Sovereign AI and sovereign cloud are among SoftBank's key focus areas going forward. The goal is to build AI, which will form part of society's core infrastructure, and the cloud platform where it operates, within Japan. On June 30, 2026, Noetra, a domestic AI company formed by SoftBank, NEC, Honda, and Sony, began building foundation models and a next-generation domestic AI cloud platform based on a national project budget from NEDO. As an operating company, SoftBank will use foundation models developed by Noetra and SB Intuitions to promote the social implementation of AI for individual companies, organizations, and the resolution of social issues.",
+      body: "Sovereign AI and sovereign cloud are among SoftBank's key focus areas going forward. The goal is to build AI, which will form part of society's core infrastructure, and the cloud platform where it operates, within Japan. On June 30, 2026, Noetra, a domestic AI company formed by SoftBank, NEC, Honda, and Sony, began developing foundation models and a next-generation domestic AI cloud platform using funding from the national NEDO project. As an operating company, SoftBank will use foundation models developed by Noetra and SB Intuitions to promote the social implementation of AI for individual companies, organizations, and the resolution of social issues.",
       articleLabel: "Read the SB Bit article",
       highlights: [
         { value: "387.3B JPY", label: "in funding from METI" },
@@ -263,36 +272,40 @@ export const siteContent = {
       title: "Projects I Have Contributed To",
       projectPreviewLabel: "View details",
       projectNoImageLabel: "No image",
-      responsibilities: [
-        "Development and maintenance of internal AI services",
-        "Proof-of-concept development using ML / LLMs",
-        "Early-stage research and development for sovereign cloud platforms",
-      ],
+      summary:
+        "I work across internal AI service development and maintenance, ML / LLM proof-of-concept projects, and early-stage research and implementation for sovereign cloud platforms.",
       projects: [
         {
           title: "SNS Analytics Platform",
           imageId: "prj-sns-analysis",
           imageComment:
-            "AI Agent-based automatic query exploration supports analysis workflows, while LLM labeling, bot filtering, and noise removal handle downstream task processing.",
-          body: "Provided an internal platform for analyzing SNS data, mainly X. It supports customer sentiment classification, geographic information extraction, noise detection, and AI Agent-based analysis and report generation. It is used by customer support departments.",
+            "This platform provides features that combine ML and LLMs, including customer sentiment classification, geographic information extraction, noise detection, and AI Agent-based analysis and report generation. I also work on integration with external systems such as X, large-scale data processing infrastructure, and maintenance for stable operations. It is used by internal customer support departments.",
+          body: "Developed an internal platform for analyzing SNS data, mainly X.",
         },
         {
           title: "RAG Platform System",
           imageId: "prj-intra-rag",
           imageComment:
-            "More precisely, another internal product handles RAG data chunking and OpenAI integration; my work focuses on the background database architecture and search algorithms.",
-          body: "Developed external knowledge integration for the internal ChatGPT Enterprise environment, as well as background processing for a commercial RAG system.",
+            "I handle verification, development, and maintenance for external knowledge integration with the internal ChatGPT Enterprise environment, as well as search and large-scale data processing for commercial RAG systems. More precisely, another internal product, TASUKI Annotation, handles chunking for RAG and OpenAI integration.",
+          body: "Verified and developed background processing for internal and commercial RAG systems.",
         },
         {
-          title: "Shareholders' Meeting Q&A Support System",
+          title: "Shareholders' Meeting Support",
           imageId: "prj-kabuso",
           imageComment:
-            "This system generates draft first responses to shareholder questions submitted online or in real time at the venue, and provides internal knowledge search for executive answers. The photo shows engineers waiting in the wing of the general meeting stage.",
-          body: "Supported answer generation using cross-organizational knowledge and provided real-time information recommendations at the meeting venue.",
+            "At shareholders' meetings, I verify and develop systems that generate draft first responses to shareholder questions submitted online or in real time at the venue based on internal and external information, as well as knowledge search systems that can support executive answers. The photo shows engineers waiting in the wing of the general meeting stage.",
+          body: "Supported shareholder Q&A generation and real-time information recommendations.",
         },
         {
-          title: "Image Recognition System for Carrier Stores",
-          body: "Maintained and operated a face image recognition system that supports alerts for high-risk customers in store operations.",
+          title: "In-Store Image Recognition",
+          body: "Operated and developed an image-based system for estimating high-risk customers in store operations.",
+        },
+        {
+          title: "Data Analysis Competitions",
+          imageId: "prj-competition",
+          imageComment:
+            "Recently, I participated in a data analysis competition at ACM KDD 2026, an influential international conference in data mining and machine learning, and passed the first round in 16th place out of roughly 300 teams. The final result is still pending, but the experience made the near-term reality of AI agents autonomously solving tasks feel very tangible.",
+          body: "Participating in data analysis competitions hosted by academic conferences and Kaggle-style platforms.",
         },
       ],
     },
@@ -383,6 +396,11 @@ export const siteContent = {
           title: "Sake and other alcoholic drinks",
           imageId: "interest-sake",
           comment: "Sake is good.",
+        },
+        {
+          title: "PC games",
+          imageId: "interest-pc-game",
+          comment: "I mostly play weird games.",
         },
       ],
     },

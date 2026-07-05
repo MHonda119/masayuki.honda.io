@@ -36,6 +36,13 @@ export const photos = [
     alt: "株主総会 質問回答補助システムの関連写真",
   },
   {
+    id: "prj-competition",
+    source: "assets/source/photos/prj-competition.png",
+    variants: ["project"],
+    position: "center",
+    alt: "データ分析コンペティションの参加実績を示す画像",
+  },
+  {
     id: "prj-miru-2025",
     source: "assets/source/photos/prj-miru-2025.PNG",
     variants: ["card"],
@@ -106,5 +113,12 @@ export const photos = [
     variants: ["card"],
     position: "center",
     alt: "お酒の写真",
+  },
+  {
+    id: "interest-pc-game",
+    source: "assets/source/photos/pc-game.png",
+    variants: ["card"],
+    position: "center",
+    alt: "PCゲームの画像",
   },
 ];
